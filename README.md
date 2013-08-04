@@ -10,13 +10,18 @@ Requirements:
  -   [yad](http://code.google.com/p/yad/) (for manual captcha decoding)
 
 Installation (for ArchLinux):
+
     yaourt -S yad casperjs
     git clone https://github.com/nikicat/fetchraif.git
 
 Usage:
-    ./fetchraif.js --captcha-decoder=manual --raif-login=YOUR_RCONNECT_LOGIN --raif-password=YOUR_RCONNECT_PASSWORD
-As a result there will be several statement.*.csv files, one for each card and one for each account.
 
-In case of any problems debug output could be enabled by this options
+    ./fetchraif.js --captcha-decoder=[manual|deathby] \
+        --raif-login=RCONNECT_LOGIN --raif-password=RCONNECT_PASSWORD \
+        [--deathby-login=DEATHBY_LOGIN --deathby-password=DEATHBY_PASS]
+As a result there will be several `statement.*.csv` files, one for each card and one for each account.
+
+In case of any problems debug output could be enabled using these options
+
     casperjs --direct --log-level=debug ./fetchraif.js ...
 For more info see [casperjs docs](http://docs.casperjs.org)
