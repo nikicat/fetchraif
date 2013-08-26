@@ -9,6 +9,10 @@ var captchaDecoders = {
         'cmd': './deathbycaptcha.sh',
         'args': [casper.cli.options['deathby-login'], casper.cli.options['deathby-password'], 'raif.png']
     },
+    'antigate': {
+        'cmd': './antigatecaptcha.sh',
+        'args': [casper.cli.options['antigate-key'], 'raif.png']
+    },
     'manual': {
         'cmd': 'yad',
         'args': ['--image', 'raif.png', '--entry']
@@ -18,7 +22,7 @@ var captchaDecoders = {
 var captchaDecoder = captchaDecoders[casper.cli.options['captcha-decoder']];
 
 if (Object.keys(casper.cli.options).length < 3) {
-    casper.echo("usage: fetchraif.js --captcha-decoder=[deathby|manual] --raif-login=RCONNECT_LOGIN --raif-password=RCONNECT_PASS [--deathby-login=DEATHBY_LOGIN --deathby-password=DEATHBY_PASS]").exit();
+    casper.echo("usage: fetchraif.js --captcha-decoder=[deathby|antigate|manual] --raif-login=RCONNECT_LOGIN --raif-password=RCONNECT_PASS [--deathby-login=DEATHBY_LOGIN --deathby-password=DEATHBY_PASS --antigate-key=ANTIGATE_KEY]").exit();
 }
 
 casper.start('https://connect.raiffeisen.ru/rba/Login.do').then(function () {
