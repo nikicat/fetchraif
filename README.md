@@ -2,7 +2,7 @@ fetchraif.js
 ===========
 
 Script to fetch account and card statements from [Raiffeisen Connect](https://connect.raiffeisen.ru) (tested only with russian Raiffeisen branch).
-It uses [casperjs](http://casperjs.org/) (based on phantomjs, which based on webkit) to load R-Connect and navigate to statements.
+It uses [casperjs](http://casperjs.org/) (based on phantomjs, which uses webkit as engine) to load R-Connect and navigate to statements.
 Login captcha could be decoded manually using [yad](http://code.google.com/p/yad/) (zenity fork) or automatically using [deathbycaptcha.com](http://deathbycaptcha.com) service (paid, 6.95$ for 5K captchas).
 
 Requirements:
@@ -16,9 +16,9 @@ Installation (for ArchLinux):
 
 Usage:
 
-    ./fetchraif.js --captcha-decoder=[manual|deathby] \
-        --raif-login=RCONNECT_LOGIN --raif-password=RCONNECT_PASSWORD \
-        [--deathby-login=DEATHBY_LOGIN --deathby-password=DEATHBY_PASS]
+    ./fetchraif.js --captcha-decoder=[deathby|antigate|manual] \
+      --raif-login=RCONNECT_LOGIN --raif-password=RCONNECT_PASS \
+      [--deathby-login=DEATHBY_LOGIN --deathby-password=DEATHBY_PASS|--antigate-key=ANTIGATE_KEY]
 As a result there will be several `statement.*.csv` files, one for each card and one for each account.
 
 In case of any problems debug output could be enabled using these options
